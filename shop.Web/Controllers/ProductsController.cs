@@ -10,7 +10,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.EntityFrameworkCore;
-    using shop.Web.Models;
+    using Models;
 
     public class ProductsController : Controller
     {
@@ -44,7 +44,6 @@
             return View(product);
         }
 
-        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
