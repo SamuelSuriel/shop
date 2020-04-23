@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:60288",
+      "applicationUrl": "https://shopsara.azurewebsites.net/",
       "sslPort": 44391
     }
   },
@@ -14,7 +14,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "ancmHostingModel": "InProcess"
+      "ancmHostingModel": "OutOfProcess"
     },
     "shop.Web": {
       "commandName": "Project",
