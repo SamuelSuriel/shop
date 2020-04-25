@@ -35,15 +35,14 @@
 
         public string ImageFullPath
         {
-            get
+                get
             {
-                if(string.IsNullOrEmpty(this.ImageUrl))
+                if (string.IsNullOrEmpty(this.ImageUrl))
                 {
                     return null;
                 }
 
-                return $"https://shopsaras.azurewebsites.net{this.ImageUrl.Substring(1)}";
-
+                return $"https://localhost:44391{this.ImageUrl.Substring(1)}";
             }
         }
 
