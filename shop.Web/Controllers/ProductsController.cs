@@ -12,6 +12,7 @@
     using Microsoft.EntityFrameworkCore;
     using Models;
 
+    [Authorize]
     public class ProductsController : Controller
     {
         private readonly IProductRepository productRepository;
