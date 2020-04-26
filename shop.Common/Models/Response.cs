@@ -6,6 +6,6 @@
 
         public string Message { get; set; }
 
-        public int Result { get; set; }
+        public object Result { get; set; }
     }
 }

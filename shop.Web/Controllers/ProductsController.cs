@@ -76,7 +76,7 @@
                 }
 
                 var product = this.ToProduct(view, path);
-                product.User = await this.userHelper.GetUserByEmailAsync(this.User.Identity.Name);
+                product.User = await this.userHelper.GetUserByEmailAsync("samueldc29@gmail.com");
                 await this.productRepository.CreateAsync(product);
                 return RedirectToAction(nameof(Index));
             }
