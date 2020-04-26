@@ -64,7 +64,8 @@
                 Price = this.random.Next(1000),
                 IsAvailabe = true,
                 Stock = this.random.Next(100),
-                User = user
+                User = user,
+                ImageUrl = $"~/Images/Products/{name}.png"
             });
 
         }
