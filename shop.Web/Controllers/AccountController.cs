@@ -1,13 +1,15 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using shop.Web.Helpers;
-using shop.Web.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-
-namespace shop.Web.Controllers
+﻿namespace shop.Web.Controllers
 {
+    using System.Linq;
+    using System.Threading.Tasks;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Mvc;
+    using Data.Entities;
+    using Helpers;
+    using Models;
+    
+
+
     public class AccountController : Controller
     {
         private readonly IUserHelper userHelper;
@@ -53,6 +55,60 @@ namespace shop.Web.Controllers
         {
             await this.userHelper.LogoutAsync();
             return this.RedirectToAction("Index", "Home");
+        }
+
+        //GET Register
+        public IActionResult Register()
+        {
+            return this.View();
+        }
+
+        //POST Register
+        [HttpPost]
+        public async Task<IActionResult> Register(RegisterNewUserViewModel model)
+        {
+            if (this.ModelState.IsValid)
+            {
+                var user = await this.userHelper.GetUserByEmailAsync(model.Username);
+                if (user == null)
+                {
+                    user = new User
+                    {
+                        FirstName = model.FirstName,
+                        LastName = model.LastName,
+                        Email = model.Username,
+                        UserName = model.Username
+                    };
+
+                    var result = await this.userHelper.AddUserAsync(user, model.Password);
+                    if (result != IdentityResult.Success)
+                    {
+                        this.ModelState.AddModelError(string.Empty, "The user couldn't be created.");
+                        return this.View(model);
+                    }
+
+                    var loginViewModel = new LoginViewModel
+                    {
+                        Password = model.Password,
+                        RememberMe = false,
+                        Username = model.Username
+                    };
+
+                    var result2 = await this.userHelper.LoginAsync(loginViewModel);
+
+                    if (result2.Succeeded)
+                    {
+                        return this.RedirectToAction("Index", "Home");
+                    }
+
+                    this.ModelState.AddModelError(string.Empty, "The user couldn't be login.");
+                    return this.View(model);
+                }
+
+                this.ModelState.AddModelError(string.Empty, "The username is already registered.");
+            }
+
+            return this.View(model);
         }
     }
 }
