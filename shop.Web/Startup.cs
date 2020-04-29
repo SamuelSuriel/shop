@@ -13,6 +13,7 @@
     using Data.Entities;
     using Helpers;
     using Microsoft.IdentityModel.Tokens;
+    using shop.Web.Data.Repositories;
 
     public class Startup
     {
@@ -61,6 +62,7 @@
             services.AddTransient<SeedDb>();
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<ICountryRepository, CountryRepository>();
+            services.AddScoped<IOrderRepository, OrderRepository>();
             services.AddScoped<IUserHelper, UserHelper>();
 
 
