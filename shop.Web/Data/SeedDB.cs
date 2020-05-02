@@ -28,6 +28,22 @@
             await this.userHelper.CheckRoleAsync("Admin");
             await this.userHelper.CheckRoleAsync("Customer");
 
+            if (!this.context.Countries.Any())
+            {
+                var cities = new List<City>();
+                cities.Add(new City { Name = "Santo Domingo" });
+                cities.Add(new City { Name = "Santiago" });
+                cities.Add(new City { Name = "Punta Cana" });
+
+                this.context.Countries.Add(new Country
+                {
+                    Cities = cities,
+                    Name = "Republica Dominicana"
+                });
+
+                await this.context.SaveChangesAsync();
+            }
+
             //Add user
             var user = await this.userHelper.GetUserByEmailAsync("samueldc29@gmail.com");
             if (user == null)
@@ -38,7 +54,10 @@
                     LastName = "Ramirez",
                     Email = "samueldc29@gmail.com",
                     UserName = "samueldc29@gmail.com",
-                    PhoneNumber = "8044812273"
+                    Address = "Calle Primera Calle Segunda",
+                    PhoneNumber = "809 481 2273",
+                    CityId = this.context.Countries.FirstOrDefault().Cities.FirstOrDefault().Id,
+                    City = this.context.Countries.FirstOrDefault().Cities.FirstOrDefault()
                 };
 
                 var result = await this.userHelper.AddUserAsync(user, "123456");
