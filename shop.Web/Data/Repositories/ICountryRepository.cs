@@ -21,11 +21,11 @@
 
         Task<int> DeleteCityAsync(City city);
 
-        //IEnumerable<SelectListItem> GetComboCountries();
+        IEnumerable<SelectListItem> GetComboCountries();
 
-        //IEnumerable<SelectListItem> GetComboCities(int conuntryId);
+        IEnumerable<SelectListItem> GetComboCities(int conuntryId);
 
-        //Task<Country> GetCountryAsync(City city);
+        Task<Country> GetCountryAsync(City city);
 
     }
 }

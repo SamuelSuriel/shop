@@ -30,7 +30,7 @@
 
             list.Insert(0, new SelectListItem
             {
-                Text = "(Select a product...)",
+                Text = "(Select a product)",
                 Value = "0"
             });
 
