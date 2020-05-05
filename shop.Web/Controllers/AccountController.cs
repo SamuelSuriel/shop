@@ -13,21 +13,24 @@
     using Models;
     using Microsoft.Extensions.Configuration;
     using Microsoft.IdentityModel.Tokens;
-    using shop.Web.Data;
+    using Data;
 
     public class AccountController : Controller
     {
         private readonly IUserHelper userHelper;
         private readonly ICountryRepository countryRepository;
+        private readonly IMailHelper mailHelper;
         private readonly IConfiguration configuration;
 
         public AccountController(
             IUserHelper userHelper,
             ICountryRepository countryRepository,
+            IMailHelper mailHelper,
             IConfiguration configuration)
         {
             this.userHelper = userHelper;
             this.countryRepository = countryRepository;
+            this.mailHelper = mailHelper;
             this.configuration = configuration;
         }
 
@@ -111,21 +114,17 @@
                         return this.View(model);
                     }
 
-                    var loginViewModel = new LoginViewModel
+                    var myToken = await this.userHelper.GenerateEmailConfirmationTokenAsync(user);
+                    var tokenLink = this.Url.Action("ConfirmEmail", "Account", new
                     {
-                        Password = model.Password,
-                        RememberMe = false,
-                        Username = model.Username
-                    };
+                        userid = user.Id,
+                        token = myToken
+                    }, protocol: HttpContext.Request.Scheme);
 
-                    var result2 = await this.userHelper.LoginAsync(loginViewModel);
-
-                    if (result2.Succeeded)
-                    {
-                        return this.RedirectToAction("Index", "Home");
-                    }
-
-                    this.ModelState.AddModelError(string.Empty, "The user couldn't be login.");
+                    this.mailHelper.SendMail(model.Username, "Shop Email confirmation", $"<h1>Shop Email Confirmation</h1>" +
+                        $"To allow the user, " +
+                        $"plase click in this link:</br></br><a href = \"{tokenLink}\">Confirm Email</a>");
+                    this.ViewBag.Message = "The instructions to allow your user has been sent to email.";
                     return this.View(model);
                 }
 
@@ -134,6 +133,7 @@
 
             return this.View(model);
         }
+
 
         public async Task<IActionResult> ChangeUser()
         {
@@ -286,6 +286,29 @@
             var country = await this.countryRepository.GetCountryWithCitiesAsync(countryId);
             return this.Json(country.Cities.OrderBy(c => c.Name));
         }
+
+        public async Task<IActionResult> ConfirmEmail(string userId, string token)
+        {
+            if (string.IsNullOrEmpty(userId) || string.IsNullOrEmpty(token))
+            {
+                return this.NotFound();
+            }
+
+            var user = await this.userHelper.GetUserByIdAsync(userId);
+            if (user == null)
+            {
+                return this.NotFound();
+            }
+
+            var result = await this.userHelper.ConfirmEmailAsync(user, token);
+            if (!result.Succeeded)
+            {
+                return this.NotFound();
+            }
+
+            return View();
+        }
+
 
     }
 }
