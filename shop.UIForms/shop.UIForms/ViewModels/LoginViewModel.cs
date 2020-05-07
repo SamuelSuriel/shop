@@ -7,12 +7,16 @@
     using Views;
     using Xamarin.Forms;
     using shop.Common.Models;
+    using shop.Common.Helpers;
+    using Newtonsoft.Json;
 
     public class LoginViewModel : BaseViewModel
     {
         private ApiService apiService;
         private bool isRunning;
         private bool isEnabled;
+
+        public bool IsRemember { get; set; }
 
         public bool IsRunning
         {
@@ -35,9 +39,8 @@
         public LoginViewModel()
         {
             this.apiService = new ApiService();
-            this.Email = "samueldc29@gmail.com";
-            this.Password = "123456";
             this.IsEnabled = true;
+            this.IsRemember = true;
         }
 
         private async void Login()
@@ -92,6 +95,12 @@
             mainViewModel.UserPassword = this.Password;
             mainViewModel.Token = token;
             mainViewModel.Products = new ProductsViewModel();
+
+            Settings.IsRemember = this.IsRemember;
+            Settings.UserEmail = this.Email;
+            Settings.UserPassword = this.Password;
+            Settings.Token = JsonConvert.SerializeObject(token);
+
             Application.Current.MainPage = new MasterPage();
 
         }

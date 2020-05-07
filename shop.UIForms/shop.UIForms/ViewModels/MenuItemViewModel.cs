@@ -6,6 +6,7 @@
     using Common.Models;
     using shop.UIForms.Views;
     using Xamarin.Forms;
+    using shop.Common.Helpers;
 
     public class MenuItemViewModel : Common.Models.Menu
     {
@@ -25,6 +26,12 @@
                     await App.Navigator.PushAsync(new SetupPage());
                     break;
                 default:
+
+                    Settings.IsRemember = false;
+                    Settings.Token = string.Empty;
+                    Settings.UserEmail = string.Empty;
+                    Settings.UserPassword = string.Empty;
+
                     MainViewModel.GetInstance().Login = new LoginViewModel();
                     Application.Current.MainPage = new NavigationPage(new LoginPage());
                     break;
