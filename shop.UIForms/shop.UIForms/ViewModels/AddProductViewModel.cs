@@ -100,7 +100,7 @@
             }
 
             var newProduct = (Product)response.Result;
-            MainViewModel.GetInstance().Products.Products.Add(newProduct);
+            MainViewModel.GetInstance().Products.AddProductToList(newProduct);
 
             this.IsRunning = false;
             this.IsEnabled = true;
