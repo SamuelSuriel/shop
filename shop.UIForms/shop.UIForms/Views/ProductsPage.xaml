@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="shop.UIForms.Views.ProductsPage" BindingContext="{Binding Main, Source={StaticResource Locator}}"
+             x:Class="shop.UIForms.Views.ProductsPage" 
+             BindingContext="{Binding Main, Source={StaticResource Locator}}"
              Title="Products">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Icon="ic_action_add_circle" Command="{Binding AddProductCommand}"/>
+    </ContentPage.ToolbarItems>
     <ContentPage.Content>
         <StackLayout
             BindingContext="{Binding Products}"

@@ -1,10 +1,13 @@
 ﻿namespace shop.UIForms.ViewModels
 {
+    using System;
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
     using System.Linq;
+    using System.Windows.Input;
     using Common.Models;
-
+    using GalaSoft.MvvmLight.Command;
+    using Views;
 
     public class MainViewModel
     {
@@ -14,10 +17,23 @@
 
         public TokenResponse Token { get; set; }
 
+        public string UserEmail { get; set; }
+
+        public string UserPassword { get; set; }
+
         public LoginViewModel Login { get; set; }
 
         public ProductsViewModel Products { get; set; }
 
+        public AddProductViewModel AddProduct { get; set; }
+
+        public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
+
+        private async void GoAddProduct()
+        {
+            this.AddProduct = new AddProductViewModel();
+            await App.Navigator.PushAsync(new AddProductPage());
+        }
 
         public MainViewModel()
         {

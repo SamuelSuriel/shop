@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Collections.ObjectModel;
+    using System.Linq;
     using Common.Models;
     using Common.Services;
     using Xamarin.Forms;
@@ -54,7 +55,7 @@
             }
 
             var myProducts = (List<Product>)response.Result;
-            this.Products = new ObservableCollection<Product>(myProducts);
+            this.Products = new ObservableCollection<Product>(myProducts.OrderBy(p => p.Name));
         }
     }
 }
