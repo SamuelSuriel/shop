@@ -257,6 +257,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\shop.Common\shop.Common.csproj" />
+    <ProjectReference Include="..\shop.UIForms\shop.UIForms\shop.UIForms.csproj" />
   </ItemGroup>
 
 </Project>

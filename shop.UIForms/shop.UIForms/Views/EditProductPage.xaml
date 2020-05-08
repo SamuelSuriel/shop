@@ -10,7 +10,6 @@
             <StackLayout
             	Padding="10">
                 <Image
-                	HeightRequest="150"
                 	Source="{Binding Product.ImageFullPath}">
                 </Image>
                 <Label

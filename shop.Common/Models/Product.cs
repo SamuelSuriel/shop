@@ -15,7 +15,7 @@
         public decimal Price { get; set; }
 
         [JsonProperty("imageUrl")]
-        public object ImageUrl { get; set; }
+        public string ImageUrl { get; set; }
 
         [JsonProperty("lastPurchase")]
         public DateTime? LastPurchase { get; set; }
@@ -34,6 +34,8 @@
 
         [JsonProperty("imageFullPath")]
         public string ImageFullPath { get; set; }
+
+        public byte[] ImageArray { get; set; }
 
         public override string ToString()
         {
