@@ -5,13 +5,16 @@
     using System.Collections.ObjectModel;
     using System.Linq;
     using System.Windows.Input;
-    using Common.Models;
     using GalaSoft.MvvmLight.Command;
-    using Views;
+    using Common.Models;
+    using UIForms.Views;
+
 
     public class MainViewModel
     {
         private static MainViewModel instance;
+
+        public User User { get; set; }
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
@@ -31,52 +34,59 @@
 
         public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
 
-        private async void GoAddProduct()
-        {
-            this.AddProduct = new AddProductViewModel();
-            await App.Navigator.PushAsync(new AddProductPage());
-        }
-
         public MainViewModel()
         {
             instance = this;
             this.LoadMenus();
         }
 
+        private async void GoAddProduct()
+        {
+            this.AddProduct = new AddProductViewModel();
+            await App.Navigator.PushAsync(new AddProductPage());
+        }
+
         private void LoadMenus()
         {
             var menus = new List<Menu>
-    {
-        new Menu
         {
-            Icon = "ic_info",
-            PageName = "AboutPage",
-            Title = "About"
-        },
-
-        new Menu
-        {
-            Icon = "ic_phonelink_setup",
-            PageName = "SetupPage",
-            Title = "Setup"
-        },
-
-        new Menu
-        {
-            Icon = "ic_exit_to_app",
-            PageName = "LoginPage",
-            Title = "Close session"
-        }
-    };
-
-            this.Menus = new ObservableCollection<MenuItemViewModel>(menus.Select(m => new MenuItemViewModel
+            new Menu
             {
-                Icon = m.Icon,
-                PageName = m.PageName,
-                Title = m.Title
-            }).ToList());
-        }
+                Icon = "ic_info",
+                PageName = "AboutPage",
+                Title = "About"
+            },
 
+            new Menu
+            {
+                Icon = "ic_person",
+                PageName = "ProfilePage",
+                Title = "Modify User"
+            },
+
+            new Menu
+            {
+                Icon = "ic_phonelink_setup",
+                PageName = "SetupPage",
+                Title = "Setup"
+            },
+
+            new Menu
+            {
+                Icon = "ic_exit_to_app",
+                PageName = "LoginPage",
+                Title = "Close session"
+            }
+        };
+
+            this.Menus = new ObservableCollection<MenuItemViewModel>(
+                menus.Select(m => new MenuItemViewModel
+                {
+                    Icon = m.Icon,
+                    PageName = m.PageName,
+                    Title = m.Title
+                }).ToList());
+        }
 
         public static MainViewModel GetInstance()
         {
@@ -84,8 +94,8 @@
             {
                 return new MainViewModel();
             }
-            return instance;
 
+            return instance;
         }
     }
 }
