@@ -37,6 +37,9 @@
 
         public ICommand LoginCommand => new RelayCommand(Login);
 
+        public ICommand RegisterCommand => new RelayCommand(this.Register);
+
+
         public LoginViewModel()
         {
             this.apiService = new ApiService();
@@ -105,5 +108,12 @@
             Application.Current.MainPage = new MasterPage();
 
         }
+
+        private async void Register()
+        {
+            MainViewModel.GetInstance().Register = new RegisterViewModel();
+            await Application.Current.MainPage.Navigation.PushAsync(new RegisterPage());
+        }
+
     }
 }
