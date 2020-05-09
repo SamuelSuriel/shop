@@ -6,7 +6,7 @@
     using GalaSoft.MvvmLight.Command;
     using Plugin.Media;
     using Plugin.Media.Abstractions;
-    using Common.Helpers;
+    using shop.Common.Helpers;
     using Xamarin.Forms;
 
     public class AddProductViewModel : BaseViewModel
