@@ -32,6 +32,8 @@
 
         public EditProductViewModel EditProduct { get; set; }
 
+        public RegisterViewModel Register { get; set; }
+
         public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
 
         public MainViewModel()
