@@ -7,7 +7,7 @@
     using System.Windows.Input;
     using GalaSoft.MvvmLight.Command;
     using Common.Models;
-    using UIForms.Views;
+    using Views;
 
 
     public class MainViewModel
@@ -33,6 +33,10 @@
         public EditProductViewModel EditProduct { get; set; }
 
         public RegisterViewModel Register { get; set; }
+
+        public RememberPasswordViewModel RememberPassword { get; set; }
+
+        public ProfileViewModel Profile { get; set; }
 
         public ICommand AddProductCommand { get { return new RelayCommand(this.GoAddProduct); } }
 
