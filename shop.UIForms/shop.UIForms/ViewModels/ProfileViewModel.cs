@@ -9,6 +9,7 @@
     using GalaSoft.MvvmLight.Command;
     using Newtonsoft.Json;
     using shop.Common.Helpers;
+    using shop.UIForms.Views;
     using Xamarin.Forms;
 
     public class ProfileViewModel : BaseViewModel
@@ -70,6 +71,8 @@
         }
 
         public ICommand SaveCommand => new RelayCommand(this.Save);
+
+        public ICommand ModifyPasswordCommand => new RelayCommand(this.ModifyPassword);
 
         public ProfileViewModel()
         {
@@ -209,6 +212,12 @@
                 "User updated!",
                 "Accept");
             await App.Navigator.PopAsync();
+        }
+
+        private async void ModifyPassword()
+        {
+            MainViewModel.GetInstance().ChangePassword = new ChangePasswordViewModel();
+            await App.Navigator.PushAsync(new ChangePasswordPage());
         }
     }
 }

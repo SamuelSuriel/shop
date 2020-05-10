@@ -10,11 +10,17 @@
     using Views;
 
 
-    public class MainViewModel
+    public class MainViewModel : BaseViewModel
     {
         private static MainViewModel instance;
 
-        public User User { get; set; }
+        private User user;
+
+        public User User
+        {
+            get => this.user;
+            set => this.SetValue(ref this.user, value);
+        }
 
         public ObservableCollection<MenuItemViewModel> Menus { get; set; }
 
@@ -35,6 +41,8 @@
         public RegisterViewModel Register { get; set; }
 
         public RememberPasswordViewModel RememberPassword { get; set; }
+
+        public ChangePasswordViewModel ChangePassword { get; set; }
 
         public ProfileViewModel Profile { get; set; }
 
