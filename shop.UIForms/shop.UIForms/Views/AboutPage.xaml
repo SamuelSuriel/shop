@@ -5,10 +5,64 @@
              Title="About">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="About"
-                   TextColor="Black"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Label Text=""/>
+            <Label Text="About Shop" 
+                   HorizontalTextAlignment="Center" 
+                   FontSize="Large" 
+                   FontAttributes="Bold" />
+            <Label Text=""/>
+            <Label Text="The online market you were wating for."
+                   HorizontalTextAlignment="Center" 
+                   FontSize="Small" 
+                   TextColor="Black"/>
+            <Label Text="Shop App offers simple and convenient control of your orders, everywhere you are." 
+                   HorizontalTextAlignment="Center"
+                   FontSize="Small" 
+                   TextColor="Black"/>
+            <Label Text="You can command your articles while outside your home, 
+                         such as at home, using our integrated Shop Cloud account."
+                   HorizontalTextAlignment="Center"
+                   FontSize="Small" 
+                   TextColor="Black"/>
+            <Label Text=""/>
+            <Label Text="Version" 
+                   HorizontalTextAlignment="Center" 
+                   FontSize="Small"  
+                   FontAttributes="Bold" 
+                   TextColor="Black"/>
+            <Label Text="1.0"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Small" 
+                   TextColor="Black"/>
+            <Label Text=""/>
+            <Label Text="Developer email"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Small" 
+                   FontAttributes="Bold"
+                   TextColor="Black"/>
+            <Label Text="sramirezsuriel@gmail.com" 
+                   HorizontalTextAlignment="Center" 
+                   FontSize="Small"
+                   TextColor="Black"/>
+            <Label Text=""/>
+            <Label Text="Released on"
+                   HorizontalTextAlignment="Center"
+                   FontSize="Small" 
+                   FontAttributes="Bold" 
+                   TextColor="Black"/>
+            <Label Text="May 29, 2018."
+                   HorizontalTextAlignment="Center" 
+                   FontSize="Small" 
+                   TextColor="Black"/>
+            <StackLayout BackgroundColor="Black" VerticalOptions="EndAndExpand">
+                <Label Text="**TU PUBLICIDAD AQUI!**" 
+                           HorizontalTextAlignment="Center"
+                            HeightRequest="40"
+                           TextColor="White"
+                       FontAttributes="Bold"
+                       IsVisible="True"
+                       />
+            </StackLayout>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
