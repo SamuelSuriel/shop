@@ -121,16 +121,16 @@
     <value>Accepter</value>
   </data>
   <data name="EmailError" xml:space="preserve">
-    <value>Vous devez entrer un email.</value>
+    <value>Vous devez entrer un email</value>
   </data>
   <data name="Error" xml:space="preserve">
     <value>Erreur</value>
   </data>
   <data name="PasswordError" xml:space="preserve">
-    <value>Vous devez entrer un mot de passe.</value>
+    <value>Vous devez entrer un mot de passe</value>
   </data>
   <data name="LoginError" xml:space="preserve">
-    <value>Email ou mot de passe incorrect!</value>
+    <value>Email ou mot de passe incorrect</value>
   </data>
   <data name="Login" xml:space="preserve">
     <value>Connexion</value>

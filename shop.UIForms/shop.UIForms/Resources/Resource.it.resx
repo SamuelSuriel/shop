@@ -127,7 +127,7 @@
     <value>Errore</value>
   </data>
   <data name="PasswordError" xml:space="preserve">
-    <value>Immettere una password.</value>
+    <value>Immettere una password</value>
   </data>
   <data name="LoginError" xml:space="preserve">
     <value>Email o password errate.</value>
@@ -139,7 +139,7 @@
     <value>Posta elettronica</value>
   </data>
   <data name="Password" xml:space="preserve">
-    <value>Password:</value>
+    <value>Password</value>
   </data>
   <data name="EmailPlaceHolder" xml:space="preserve">
     <value>Inserisci la tua e-mail</value>

@@ -10,17 +10,7 @@
                 HorizontalOptions="CenterAndExpand" 
                    FontSize="Large" 
                    FontAttributes="Bold"
-                   TextColor="Black"/>
-
-            <StackLayout BackgroundColor="Black" VerticalOptions="EndAndExpand">
-                <Label Text="**TU PUBLICIDAD AQUI!**" 
-                           HorizontalTextAlignment="Center"
-                            HeightRequest="40"
-                           TextColor="White"
-                       FontAttributes="Bold"
-                       IsVisible="True"
-                       />
-            </StackLayout>
+                   TextColor="Black"/>            
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
